@@ -75,10 +75,10 @@
 	 <p>There is an image with a class of FLEXIBLE which is set to a max-width equal to the size of the image.  Simutaneously the class sets the image to a percentage width, allowing the image to flex in size.  The height is not changed, as this would skew the image.</p>
 	 <p>The LIST elements inside the NAV are displayed inline by setting the display to be inline-block.  Bullets are removed by setting the UL to display</p>
 	 <p>The FOOTER includes a clear:both to keep everything above it!</p>
-	  <img src="http://dummyimage.com/300x400" alt="Picture of Me!" class="flexible" />
+	  <img src="images/afternoon.jpg" alt="time of day pic" id="myPic" class="flexible" />
      </main>
     <footer>
-      <small>&copy; 2013, All Rights Reserved ~
+      <small>&copy; 2013-<span id="myYear"> Year Goes Here</span>, All Rights Reserved ~
       <a href="https://validator.w3.org/check/referer" target="_blank">Valid HTML</a> ~
       <a href="https://jigsaw.w3.org/css-validator/check?uri=referer" target="_blank">Valid CSS</a>
       </small>
@@ -90,19 +90,44 @@ let myDate = new Date();
 let myHour = myDate.getHours();
 let myGreeting ="";
 let myColor = "";
+let myPic = "images/";
+let myYear = myDate.getFullYear();
+
 
 //TEST ONLY - REMOVE THIS
-myHour =9;
+myHour =4;
 
 if(myHour >= 5 && myHour <12){
-	myGreeting = "Good Morning?";
+	myGreeting = "Good Morning!";
 	myColor = "yellow";
-}else{
-    alert('NOT morning');
-}
+	myPic += "morning.jpg";
 
+
+} else if (myHour >=12 && myHour <18){
+
+	myGreeting = "Good Afternoon!";
+	myColor = "orange";
+	myPic += "afternoon.jpg";
+
+} else if (myHour >=18 && myHour <23){
+
+myGreeting = "Good Evening!";
+myColor = "red";
+myPic += "evening.jpg";
+
+} else{
+
+myGreeting = "Good Night!";
+myColor = "blue";
+myPic += "night.jpg";
+
+}
 document.getElementById('mydiv').innerHTML = myGreeting;
 document.body.style.backgroundColor = myColor;
+document.getElementById("myPic").src = myPic;
+document.getElementById("myYear").src = myYear;
+
+
 </script>
 </body>
 </html>
